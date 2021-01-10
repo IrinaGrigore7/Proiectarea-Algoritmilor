@@ -1,0 +1,86 @@
+GRIGORE IRINA-DOMNICA
+325CB
+
+								Tema 1
+					--Proiectarea Alogoritmilor--
+
+
+    ->Problema 1: Gigel trezorier la BNR
+    Solutia pentru setul cu tipul 1: pentru fiecare dintre cele 5 bancote avem 
+2 bancnote care pot fi asezate peste, acest lucru fiind reprezentat astfel:
+-sa preupunem ca avem un numar de 3 bancote, iar bancnota peste care dorim sa le asezem
+pe restul este bancnota de 10 lei. Atunci avem urmatorul arbore:
+
+					10
+				  /    \
+                50     100
+               /  \    /  \
+             10  200  10  100
+
+In cazul acesta, numarul de moduri in care cele 3 bancnote pot fi asezate este 
+dat de numarul elementelor de pe ultimul nivel, si anume 2^(3-1). Asa dar, pentru
+n bancnote numarul modurilor in care pot fi asezate acestea este de 5*2^(n-1). 
+Tehnica folosita pentru a obtine rezultatul ridicarii la putere este Divide & Impera. 
+Tin sa mentionez ca, avand in vedere ca in laboratorul de Divide & Impera am facut 
+ridicarea la putere, am preluat solutia de acolo.
+
+Complexitate temporala: O(log n) 
+	-ridicarea la putere
+Complexitate spatiala: O(1)
+
+	Solutia pentru setul cu tipul 2: tehnica pe care am folosit-o la rezolvarea         
+acestei probleme este Programarea Dinamica. Pentru a afla in cate moduri se pot 
+aseza cele n bancnote trebuie sa stim pentru fiecare din cele 5 (de 10 lei, 50 lei,
+100 lei, 200 lei, 500 lei) la fiecare pas in cate moduri se pot aseza. De asemene, 
+trebuie sa stim pentru fiecare bancnota care sunt bancnotele din care poate proveni.
+Cazul de baza: completez vectorul solution cu 1, deoarece in momentul in care avem o 
+singura bancnota aceasta poate fi asezata int-un sigur mod.
+Pentru 2 bancnote: stim ca, de expemplu, bancnota de 10 lei poate fi pusa peste o bancnota
+de 50, una de 100 si una de 500, asa ca in vectorul solution de la pasul curent, 
+pe pozitia 0, corespunzatoare bancnotei de 10 lei, adunam ce se ce afla pe pozitiile 
+corespunzatoare celor 3 bancnote la pasul anterior. Se procedeaza la fel pentru fiecare
+din cele 5 bancnote.
+Analog pentru n bancnote.
+Solutia finala este data de suma elemtelor din vector.
+
+Complexitate temporala: O(n)
+Complexitate spatiala: O(1)
+
+	->Problema 2: Gigel si gardul
+	Tehnica pe care am folosit-o la rezolvarea acestei probleme este Greedy.
+	Pentru a retine gardurile, mi-am facut o clasa Pair in care am suprascris metoda 
+compareTo pentru a putea sorta gardurile crescator dupa start si desprescator dupa 
+valoarea de end. Dupa ce am sortat vectorul, la fiecare pas se verifica valoarea de final, 
+daca aceasta este mai mica decat o valoare maxima retinuta anterior, atunci gardul este 
+considerat redundant, daca nu, inseamna ca am gasit un gard cu o noua valoare de final maxima. 
+
+Complexitate temporala: O(n(log n)
+	-O(n(log n)) sortare
+	-O(n) parcurgerea tuturor gardurilor pentru a le gasi pe cele redundante
+Complexitate spatiala: O(n)
+	-realizarea unui vector de n elemente
+
+	->Problema 3: Gigel bombonel
+	Tehnica folosita la rezolvarea probleme este Programarea Dinamica.
+	Solutia acestei probleme consta in construirea unei matrici in care se retine  
+numarul de moduri in care Gigel poate imparti o bomboana, doua bomboane...n bomboane
+la un copil, doi copii...m copii.
+	Mai exact, daca am 3 copii si 5 bomboane, voi construi o matrice de 6x3. Primului
+copil ii pot da bomboane doar dintr-un anumit interval asa ca, verific pentru fiecare 
+numar de bomboane daca ii pot da din intervalul respectiv. In cazul in care am doi copii 
+si trebuie sa impart bomboanele, iau intervalul celui de al doilea, scad din numarul 
+curent de bomboane capetele intervalului si ma uit la coloana anterioara si numar in 
+cate moduri am impartit unui singur copil subintervalul extras. Pentrul cel de-al 
+treilea copil procedez asemantor, scad din numarul curent de bomboane capetele de interval 
+si numar in cate moduri am impartit bomboanele din subintervalul rezultat celor doi copii. 
+Rezultatul final se va afla in coltul din dreapta jos al matricii.
+	Deoarece nu am nevoie de toate informatiile din matrice ma folosesc de doi vectori 
+in care retin informatiile de la pasul curent si pasul anterior.
+
+Complexitate temporala: O(k*m*n)
+	-k numarul de copii
+	-m numarul de bomboane
+	-n dimensiunea subinterval de lungime maxima
+Complexitate spatiala: O(n)
+
+
