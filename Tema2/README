@@ -1,15 +1,21 @@
 GRIGORE IRINA-DOMNICA
 325CB
 
-								TEMA2 PA
+			TEMA2 PA
 
 
     La aceasta tema am rezolvat doar problemele 2 si 3.
     Pentru problema 2 am folosit algoritmul lui Bellman Ford combinat cu
-sortarea topologica. Dupa ce sortez toate nodurile din graf, relaxez toate muchiile, stocand in vectorul de distante, distantele minime de la nodul sursa la toate celelalte noduri. Rezultatul final il reprezinta valoarea de pe pozitia nodului destinatie.
+sortarea topologica. Dupa ce sortez toate nodurile din graf, relaxez toate
+muchiile, stocand in vectorul de distante, distantele minime de la nodul 
+sursa la toate celelalte noduri. Rezultatul final il reprezinta valoarea 
+de pe pozitia nodului destinatie.
 
 	Pentru problema 3 am folosit algoritmul lui Dijkstra, adaptat la cerinta 
-problemei. Retin in d energia minima de care are nevoie Robin Hood, iar rezultatul se afla pe ultima pozitie din vector. Cu ajutorul vectorului de parinti refac drumul parcurs de Robin de la sursa pana la destinatie. 
+problemei. Retin in d energia minima de care are nevoie Robin Hood, iar rezultatul 
+se afla pe ultima pozitie din vector. Cu ajutorul vectorului de parinti refac 
+drumul parcurs de Robin de la sursa pana la destinatie. 
 	
 	De asemenea, tin sa mentionez ca pentru implementarea acestei teme m-am 
-folosit de rezolvarile mele proprii ale laboratoarelor, precum si de solutiile postate de catre echipa de PA.
+folosit de rezolvarile mele proprii ale laboratoarelor, precum si de solutiile 
+postate de catre echipa de PA.
